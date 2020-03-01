@@ -5,7 +5,6 @@ public class doit {
 		boolean a = true;
 		boolean b = false;
 		int c = 1;
-		boolean d = (boolean)c;
 		System.out.println(c);
 	}
 }
