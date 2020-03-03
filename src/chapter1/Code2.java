@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Code2 {
 
 	public static void main(String[] args) {
-		
+		// 숫자 입력받아 합계랑 최대값 구하기
 		Scanner sc = new Scanner(System.in);
 		System.out.print("배열의 개수를 입력하세요 : ");
 		int max = sc.nextInt();

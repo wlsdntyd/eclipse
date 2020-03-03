@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Code6 {
 
 	public static void main(String[] args) {
-		
+		// 숫자 배열에서 구간 합이 제일 높은 것 출력
 		Scanner sc = new Scanner(System.in);
 		int max = sc.nextInt();
 		int[] array = new int[max];

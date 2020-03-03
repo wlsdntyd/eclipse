@@ -3,7 +3,7 @@ package chapter1;
 import java.util.Scanner;
 
 public class Code7 {
-
+	// code6 보다 간단하게.
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int max = sc.nextInt();

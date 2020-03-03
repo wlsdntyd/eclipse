@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Code8 {
 
 	public static void main(String[] args) {
-		
+		// 숫자 배열 구간 숫자들 중 소수이면서 최대값 출력
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int[] array = new int[n];

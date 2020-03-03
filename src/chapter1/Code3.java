@@ -3,7 +3,7 @@ package chapter1;
 import java.util.Scanner;
 
 public class Code3 {
-
+		// 숫자 배열 앞으로 한 칸씩 당기기.
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int max = sc.nextInt();
@@ -16,7 +16,7 @@ public class Code3 {
 		for(int i = 0; i < max; i++)
 			System.out.print(array[i] + " ");
 		
-		int temp = array[0];		// 앞으로 한 칸씩 땅겨줌.
+		int temp = array[0];
 		for(int i = 0; i < max-1; i++)
 			array[i] = array[i+1];
 		array[max-1] = temp;

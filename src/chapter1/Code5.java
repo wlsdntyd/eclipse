@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Code5 {
 
 	public static void main(String[] args) {
-		
+		// 숫자 배열 같은 값 세기
 		Scanner sc = new Scanner(System.in);
 		int max = sc.nextInt();
 		int[] array = new int[max];
