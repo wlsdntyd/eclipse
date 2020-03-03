@@ -1,29 +1,29 @@
 package selfnode;
 
 public class SelfSingleLinkedList<T> {
-	
+
 	NodeSelf<T> head;
 	int size;
-	
+
 	public SelfSingleLinkedList() {
 		size = 0;
 		head = null;
 	}
-	
+
 	public void addFirst(T data) {		// complete
 		NodeSelf<T> firstnode = new NodeSelf<>(data);
 		firstnode.next = head;
 		head = firstnode;
 		size++;
 	}
-	
+
 	public void addAfter(NodeSelf<T> bf, T data) {		// complete
 		NodeSelf<T> newnode = new NodeSelf<>(data);		// 객체 이름받는거라 쓸데 없을듯
 		newnode.next = bf.next;
 		bf.next = newnode;
 		size++;
 	}
-	
+
 	public void addLast(T data) {	// complete
 		if(size == 0) {
 			addFirst(data);
@@ -36,16 +36,16 @@ public class SelfSingleLinkedList<T> {
 			size++;
 		}
 		else {
-		NodeSelf<T> p = head;
-		for(int i = 0; i < size-1; i++)
-			p = p.next;
-		NodeSelf<T> newnode = new NodeSelf<>(data);
-		newnode.next = p.next;
-		p.next = newnode;
-		size++;
+			NodeSelf<T> p = head;
+			for(int i = 0; i < size-1; i++)
+				p = p.next;
+			NodeSelf<T> newnode = new NodeSelf<>(data);
+			newnode.next = p.next;
+			p.next = newnode;
+			size++;
 		}
 	}
-	
+
 	public boolean addIndex(int index, T data) {	// complete
 		if(index < 0 || index >= size)
 			return false;
@@ -54,32 +54,32 @@ public class SelfSingleLinkedList<T> {
 			return true;
 		}
 		else {
-		NodeSelf<T> newnode = new NodeSelf<>(data);
-		NodeSelf<T> p = head;
-		NodeSelf<T> q = p;
-		for(int i = 0; i < index; i++) {
-			q = p;
-			p = p.next;
-		}
-		newnode.next = q.next;
-		q.next = newnode;
-		size++;
-		return true;
+			NodeSelf<T> newnode = new NodeSelf<>(data);
+			NodeSelf<T> p = head;
+			NodeSelf<T> q = p;
+			for(int i = 0; i < index; i++) {
+				q = p;
+				p = p.next;
+			}
+			newnode.next = q.next;
+			q.next = newnode;
+			size++;
+			return true;
 		}
 	}
-	
+
 	public void DataPrint(int index) {		// complete
 		if(index == 0) {
 			System.out.println(head.data);
 		}
 		else {
-		NodeSelf<T> p = head;
-		for(int i = 0; i < index; i++)
-			p = p.next;
-		System.out.println(p.data);
+			NodeSelf<T> p = head;
+			for(int i = 0; i < index; i++)
+				p = p.next;
+			System.out.println(p.data);
 		}
 	}
-	
+
 	public int getIndex(NodeSelf<T> sc) {	// complete
 		if(head.data.equals(sc.data))
 			return 0;
@@ -103,18 +103,18 @@ public class SelfSingleLinkedList<T> {
 			size--;
 		}
 		else {
-		NodeSelf<T> p = head;
-		NodeSelf<T> q = p;
-		for(int i = 0; i < index; i++) {
-			q = p;
-			p = p.next;
-		}
-		q.next = p.next;
-		size--;
-		System.out.println("delete");
+			NodeSelf<T> p = head;
+			NodeSelf<T> q = p;
+			for(int i = 0; i < index; i++) {
+				q = p;
+				p = p.next;
+			}
+			q.next = p.next;
+			size--;
+			System.out.println("delete");
 		}
 	}
-	
+
 	public void AllDataPrint() {
 		NodeSelf<T> p = head;
 		for(int i = 0; i < size-1; i++) {
@@ -123,22 +123,35 @@ public class SelfSingleLinkedList<T> {
 		}
 		System.out.println(p.data);
 	}
-	
+
 	public NodeSelf<T> getNode(int index){
 		if(index == 0)
 			return head;
 		else if(index == 1)
 			return head.next;
 		else {
-		NodeSelf<T> p = head;
-		for(int i = 0; i < index; i++)
-			p = p.next;
-		return p;
+			NodeSelf<T> p = head;
+			for(int i = 0; i < index; i++)
+				p = p.next;
+			return p;
 		}
 	}
-	
+
+	public T getData(int index) {
+		if(index == 0)
+			return head.data;
+		else if(index == 1)
+			return head.next.data;
+		else {
+			NodeSelf<T> p = head;
+			for(int i = 0; i < index; i++)
+				p = p.next;
+			return p.data;
+		}
+	}
+
 	public static void main(String[] args) {
-		
+
 		SelfSingleLinkedList<String> linkedList = new SelfSingleLinkedList<>();
 		linkedList.addFirst("jinwoo");
 		linkedList.addFirst("111");
@@ -153,9 +166,9 @@ public class SelfSingleLinkedList<T> {
 		linkedList.DataPrint(2);
 		linkedList.remove(2);
 		linkedList.AllDataPrint();
-		NodeSelf i = linkedList.getNode(0);
-		System.out.println(i.data);
-		
+		NodeSelf<String> i = linkedList.getNode(0);
+		System.out.println(i);
+//		Object b = linkedList.getData(2);
+//		System.out.println(b);
 	}
-
 }
