@@ -11,7 +11,7 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 	
 	static String[] words = new String[100000];
 	static int[] count = new int[100000];
-	static int n;
+	static int n = 0;
 
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
@@ -25,15 +25,22 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 			else if(command.equals("find")) {
 				String keyword = kb.next();
 				int index = findWord(keyword);
-				if(index != -1)
-					System.out.println("The word" + keyword + "appears" + count[index] + " times.");
+				if(index > -1)
+					System.out.println("The word " + words[index] + " appears " + count[index] + " times.");
 				else
-					System.out.println("The word" + keyword + " doesn't appear");
+					System.out.println("The word " + keyword + " doesn't appear");
+			}
+			else if(command.equals("saveAs")) {
+				String fileName = kb.next();
+				saveAs(fileName);
 			}
 			else if(command.equals("exit"))
 				break;
 		}
 		kb.close();
+		
+		for(int i = 0; i < n; i++)
+			System.out.println(words[i] + " " + count[i]);
 	}
 	
 	public static void makeIndex(String fileName) {
@@ -51,7 +58,7 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 	
 	public static void addWord(String word) {
 		int index = findWord(word);
-		if(index > -1) {
+		if(index != -1) {
 			count[index]++;
 		}
 		else {
@@ -63,7 +70,7 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 	
 	public static int findWord(String keyword) {
 		for(int i = 0; i < n; i++)
-			if(words[i].equals(keyword))
+			if(words[i].equalsIgnoreCase(keyword))
 				return i;
 		return -1;
 	}
@@ -77,6 +84,7 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 			out.close();
 		} catch (IOException e) {
 			System.out.println("Save failed. Don't ask me why!");
+			return;	// return 쓰나 안 쓰나 끝나는 부분이기에 상관없다
 		}
 	}
 }
