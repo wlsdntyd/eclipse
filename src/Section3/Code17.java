@@ -48,12 +48,27 @@ public class Code17 {	// 텍스트 파일 단어 개수 구하기 수정할 부분 많음
 			Scanner theFile = new Scanner(new File(fileName));
 			while(theFile.hasNext()) {
 				String word = theFile.next();
-				addWord(word);
+				String trimmed = trimming(word);
+				if(trimmed != null)
+					addWord(trimmed);
 			}
 			theFile.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not exist!");
 		}
+	}
+	public static String trimming(String str) {
+		int i = 0, j = str.length()-1;
+		
+		while(i < str.length() && !Character.isLetter(str.charAt(i)))
+			i++;
+		
+		while(j >= 0 && !Character.isLetter(str.charAt(j)))
+			j--;
+		
+		if(i > j)
+			return null;		
+		return str.substring(i, j+1);
 	}
 	
 	public static void addWord(String word) {
