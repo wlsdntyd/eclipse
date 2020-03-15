@@ -1,5 +1,8 @@
 package selfnode;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class SelfSingleLinkedList<T> {
 
 	NodeSelf<T> head;
@@ -148,6 +151,37 @@ public class SelfSingleLinkedList<T> {
 				p = p.next;
 			return p.data;
 		}
+	}
+	// 3/15 Iterator 반복자 구현
+	public Iterator<T> iterator(){
+		return new MyIterator();
+	}
+	
+	private class MyIterator implements Iterator<T> {
+		private NodeSelf<T> nextNode;
+		
+		public MyIterator() {
+			nextNode = head;
+		}
+		
+		@Override
+		public boolean hasNext() {	
+			return (nextNode != null);
+		}
+
+		@Override
+		public T next() {
+			if(nextNode == null)
+				throw new NoSuchElementException();
+			T val = nextNode.data;
+			nextNode = nextNode.next;
+			return val;
+		}
+		
+		public void remove() {
+			// later
+		}
+		
 	}
 
 	public static void main(String[] args) {
